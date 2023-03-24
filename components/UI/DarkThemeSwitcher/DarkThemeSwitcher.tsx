@@ -2,6 +2,8 @@ import {useEffect, useState} from "react";
 
 export const DarkThemeSwitcher = () => {
 
+    const [isLoaded, setLoaded] = useState(false)
+
     const [isDarkMode, setDarkMode] = useState(
         false
     )
@@ -9,12 +11,12 @@ export const DarkThemeSwitcher = () => {
     useEffect(() => {
         const local = localStorage.getItem('is-dark-mode')
         setDarkMode(local === "true")
+        setLoaded(true)
     }, [])
 
     useEffect(() => {
-        const test = isDarkMode
-        localStorage.setItem('is-dark-mode', String(test))
-    }, [isDarkMode])
+        if(isLoaded) localStorage.setItem('is-dark-mode', String(isDarkMode))
+    }, [isDarkMode, isLoaded])
 
     const handleClick = () => {
         setDarkMode(!isDarkMode)
