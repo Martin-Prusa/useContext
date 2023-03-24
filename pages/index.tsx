@@ -4,13 +4,11 @@ import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import {DarkThemeSwitcher} from "@/components/UI/DarkThemeSwitcher";
 import {useContext} from "react";
-import {ThemeContext} from "@/components/UI/Theme";
+import {ThemeContext, ThemeProvider} from "@/components/UI/Theme";
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-
-    const {theme} = useContext(ThemeContext)
 
   return (
     <>
@@ -22,7 +20,9 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
           <DarkThemeSwitcher />
-          {theme}
+          <ThemeProvider>
+
+          </ThemeProvider>
       </main>
     </>
   )

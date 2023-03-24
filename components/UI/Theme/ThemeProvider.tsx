@@ -1,7 +1,7 @@
 import {ReactNode, useState} from "react";
 import {ThemeContext} from "@/components/UI/Theme/ThemeContext";
 
-function ThemeProvider({children}: {children: ReactNode}) {
+export function ThemeProvider({children}: {children: ReactNode}) {
     const [theme, setTheme] = useState<string | null>(null)
 
     return (
